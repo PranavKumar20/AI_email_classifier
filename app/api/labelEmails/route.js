@@ -54,7 +54,6 @@ export async function POST(request) {
     const responseText = result.response.text();
     console.log('Response received:', responseText);
 
-    // Extract the JSON part using a regular expression
     const jsonMatch = responseText.match(/```json([\s\S]*?)```/);
     if (!jsonMatch || jsonMatch.length < 2) {
       throw new Error('Invalid response format');

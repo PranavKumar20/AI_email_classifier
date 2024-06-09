@@ -72,7 +72,3 @@ export async function POST(request) {
   }
 }
 
-export async function GET() {
-  console.log('Passed through test');
-  return NextResponse.json({ message: 'Hello from Next.js' }, { status: 200 });
-}

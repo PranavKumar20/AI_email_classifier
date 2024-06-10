@@ -105,7 +105,7 @@ const DisplayEmails = () => {
           </button>
         </div>
         <div className="p-6">
-          <div className='border border-black flex justify-between'>
+          <div className='sm:flex justify-between'>
             <div>
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
@@ -128,13 +128,13 @@ const DisplayEmails = () => {
                 Label Emails
               </button>
             </div>
-            <div className='mt-10 border-2'>
-              <div className='md:flex'>
+            <div className='md:mt-10'>
+              <div className='sm:flex'>
                 <ColourWithLabel colour="bg-rose-400" label="Marketing" />
                 <ColourWithLabel colour="bg-orange-500" label="Important" />
                 <ColourWithLabel colour="bg-yellow-500" label="Promotional" />
               </div>
-              <div className='md:flex md:justify-center' >
+              <div className='sm:flex md:justify-center' >
                 <ColourWithLabel colour="bg-pink-500" label="Social" />
                 <ColourWithLabel colour="bg-teal-500" label="General" />
               </div>

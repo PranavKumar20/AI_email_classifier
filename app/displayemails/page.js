@@ -128,7 +128,7 @@ const DisplayEmails = () => {
                 <div className="flex justify-between">
                   <p className="font-bold">{email.subject}</p>
                   {email.category && (
-                    <span className={`bg-${getColor(email.category)} text-white px-2 py-1 rounded`}>
+                    <span className={`bg-${getColor(email.category)} px-2 py-1 rounded`}>
                       {/* //  <span className={`bg-black text-white px-2 py-1 rounded`}> */}
                       {email.category}
                     </span>

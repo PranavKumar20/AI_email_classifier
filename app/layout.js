@@ -1,4 +1,4 @@
-import Authprovider from '@/component/Authprovider/Authprovider'
+import Authprovider from '@/components/Authprovider/Authprovider'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -14,9 +14,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Authprovider>
-        {children}
+          {children}
         </Authprovider>
-        </body>
+      </body>
     </html>
   )
 }

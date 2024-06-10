@@ -26,12 +26,13 @@ const Login = ({ onLogin }) => {
 
   return (
     <div className='flex text-center items-center justify-center min-h-screen'>
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+      <div className="bg-gray-100 p-8 rounded-lg shadow-md w-full max-w-md">
         <div className="font-medium text-2xl mb-6">Welcome to AI Email Classifier</div>
         <div className="text-lg mb-6">Please enter the API key to continue</div>
         <div className="flex flex-col mb-6">
           <label htmlFor="geminiApiKey" className="text-lg mb-2">Google Generative AI API Key:</label>
           <input
+            autoComplete='false'
             type="text"
             id="geminiApiKey"
             value={geminiApiKey}
@@ -42,7 +43,7 @@ const Login = ({ onLogin }) => {
         <button
           onClick={handleLogin}
           disabled={!geminiApiKey}
-          className="bg-blue-500 text-white text-lg rounded w-full py-3 hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed"
+          className="bg-blue-500 text-white text-lg rounded w-full p-3 hover:bg-blue-600 disabled:bg-blue-300 disabled:cursor-not-allowed"
         >
           Login with Google
         </button>

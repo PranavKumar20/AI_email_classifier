@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Login from '../component/Login'
+import Login from '../components/Login'
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,7 +18,14 @@ export default function Home() {
 
   return (
     <main className="flex justify-center min-h-screen items-center">
-      {isLoggedIn ? <p>Welcome! You are logged in.</p> : <Login onLogin={handleLogin} />}
+      {isLoggedIn ? <Welcome /> : <Login onLogin={handleLogin} />}
     </main>
   )
+}
+
+const Welcome = () => {
+  return <div className='text-2xl font-medium text-center' >
+    <div>Welcome! you are logged in.</div>
+    <div>Redirecting you to the Emails page</div>
+  </div>
 }

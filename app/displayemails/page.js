@@ -94,51 +94,70 @@ const DisplayEmails = () => {
 
   if (status === "authenticated") {
     return (
-      <div className="p-6">
-        <button
-          className="bg-amber-400 text-white px-4 py-2 rounded mb-4 absolute top-4 right-4"
-          onClick={handleSignout}
-        >
-          Logout
-        </button>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label htmlFor="numEmails" className="block text-sm font-medium text-gray-700">Number of Recent Emails:</label>
-            <div className="flex">
-              <input
-                type="number"
-                id="numEmails"
-                value={numEmails}
-                onChange={(e) => setNumEmails(e.target.value)}
-                className="mt-1 p-2 border border-gray-300 rounded shadow-sm"
-              />
+      <div>
+        <div className='flex justify-between bg-black px-6 py-2' >
+          <div className=' text-xl md:text-3xl font-bold pt-1 sm:pt-0 text-white'>AI Emails Classifier</div>
+          <button
+            className="bg-amber-400 text-white px-4 py-2 rounded"
+            onClick={handleSignout}
+          >
+            Logout
+          </button>
+        </div>
+        <div className="p-6">
+          <div className='border border-black flex justify-between'>
+            <div>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-4">
+                  <label htmlFor="numEmails" className="block text-sm font-medium text-gray-700">Number of Recent Emails:</label>
+                  <div className="flex">
+                    <input
+                      type="number"
+                      id="numEmails"
+                      value={numEmails}
+                      onChange={(e) => setNumEmails(e.target.value)}
+                      className="mt-1 p-2 border border-gray-300 rounded shadow-sm"
+                    />
+                  </div>
+                </div>
+              </form>
+              <button
+                className="bg-emerald-400 text-white px-4 py-2 rounded mb-4"
+                onClick={labelEmails}
+              >
+                Label Emails
+              </button>
+            </div>
+            <div className='mt-10 border-2'>
+              <div className='md:flex'>
+                <ColourWithLabel colour="bg-rose-400" label="Marketing" />
+                <ColourWithLabel colour="bg-orange-500" label="Important" />
+                <ColourWithLabel colour="bg-yellow-500" label="Promotional" />
+              </div>
+              <div className='md:flex md:justify-center' >
+                <ColourWithLabel colour="bg-pink-500" label="Social" />
+                <ColourWithLabel colour="bg-teal-500" label="General" />
+              </div>
             </div>
           </div>
-        </form>
-        <button
-          className="bg-emerald-400 text-white px-4 py-2 rounded mb-4"
-          onClick={labelEmails}
-        >
-          Label Emails
-        </button>
-        {loading ? <p>Loading emails...</p> : (
-          <ul className="space-y-2">
-            {(classifiedEmails.length > 0 ? classifiedEmails : emails).map((email, index) => (
-              <li key={index} className="p-4 bg-gray-100 rounded shadow">
-                <div className="flex justify-between">
-                  <p className="font-bold">{email.subject}</p>
-                  {email.category && (
-                    <span className={`bg-${getColor(email.category)} px-2 py-1 rounded`}>
-                      {/* //  <span className={`bg-black text-white px-2 py-1 rounded`}> */}
-                      {email.category}
-                    </span>
-                  )}
-                </div>
-                <p>{email.snippet}</p>
-              </li>
-            ))}
-          </ul>
-        )}
+          {loading ? <p>Loading emails...</p> : (
+            <ul className="space-y-2">
+              {(classifiedEmails.length > 0 ? classifiedEmails : emails).map((email, index) => (
+                <li key={index} className="p-4 bg-gray-100 rounded shadow">
+                  <div className="flex justify-between">
+                    <p className="font-bold">{email.subject}</p>
+                    {email.category && (
+                      <span className={`bg-${getColor(email.category)} px-2 py-1 rounded text-white`}>
+                        {email.category}
+                      </span>
+                    )}
+                  </div>
+                  <p>{email.snippet}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
     )
   }
@@ -151,6 +170,13 @@ const DisplayEmails = () => {
         <div onClick={handleUnlogged} className='cursor-pointer border border-black p-3 bg-emerald-400 text-white rounded-md m-3 hover:bg-emerald-500'  >Go to login Page</div>
       </div>
     </div>
+  </div>
+}
+
+const ColourWithLabel = ({ colour, label }) => {
+  return <div className='flex mx-2 '>
+    <div className={`rounded-full w-4 h-4 mt-1 pt-2 mx-2 ${colour}`} ></div>
+    <div className='text-xl'>{label}</div>
   </div>
 }
 
